@@ -1,0 +1,25 @@
+server:
+  port: 8788
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  data:
+    mongodb:
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
+      database: ${MONGO_DB}
+      username: ${MONGO_USER}
+      password: ${MONGO_PASSWORD}
+      authentication-database: admin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
+          issuer-uri: ${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}
+
+logging:
+  level:
+    org.springframework.security: trace

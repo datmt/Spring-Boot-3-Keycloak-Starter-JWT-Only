@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  mongo_ukata:
+    image: mongo:5.0
+    restart: always
+    container_name: mongo_ukata
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+    ports:
+      - "27019:27017"
+    env_file:
+      - mongo.env
+
+networks:
+  local-net:
+    external: true
